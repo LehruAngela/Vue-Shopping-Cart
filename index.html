@@ -8,22 +8,24 @@
 <body>
   <div id="app">
     <label>From</label>
-    <select name="" id="">
-      <option value="" v-for="currency in formattedCurrencies">{{ currency.currencyName }}</option>
+    <select v-model="from" name="" id="">
+      <option :value="currency.id" v-for="currency in formattedCurrencies">{{ currency.currencyName }}</option>
     </select>
 
     <label>To</label>
-    <select name="" id="">
-      <option value="" v-for="currency in formattedCurrencies">{{ currency.currencyName }}</option>
+    <select v-model="to" name="" id="">
+      <option :value="currency.id" v-for="currency in formattedCurrencies">{{ currency.currencyName }}</option>
     </select>
 
     <br/>
-    <input type="text" placeholder="Amount">
+    <input v-model="amount" type="text" placeholder="Amount">
 
     <br/>
-    <button>Convert</button>
+    <button :disabled="disabled" @click="convertCurrency()">
+      {{ loading ? 'Converting ...' : 'Convert' }}
+    </button>
 
-    <h1>54.99</h1>
+    <h1>{{ calculateResult }}</h1>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
