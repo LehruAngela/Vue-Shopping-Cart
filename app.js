@@ -1,60 +1,49 @@
+Vue.component('card', {
+  props: ['title', 'content'],
+  data() {
+    return {
+      claps: 0
+    }
+  },
+  template: `
+  <div class="card">
+  <h3 class="card-title">
+    {{title}} 
+  </h3>
+  <div class="card-text">
+    {{content}}
+  </div>
+  <div>{{claps}}</div>
+  <button @click="clapForArticle">Clap for me</button>
+  <button @click="deleteArticle">Delete me</button>
+</div>`,
+  methods: {
+    deleteArticle(){
+      this.$emit('delete-article', this.title)
+    },
+    clapForArticle(){
+      this.claps++ 
+    }
+  }
+})
+
 new Vue({
   el: '#app',
   data: {
-    currencies: {},
-    from: "EUR",
-    to: "USD",
-    amount: 0,
-    result: 0,
-    loading: false
+    articles: [{
+      title: 'Angular',
+      content: 'Vue'
+    },{
+      title: 'Learn',
+      content: 'Vue Components'
+    },{
+      title: 'Learn',
+      content: 'Vue API'
+    }]
   },
-  mounted() {
-    this.getCurrencies()
-  },
-  computed: {
-    formattedCurrencies() {
-      return Object.values(this.currencies)
-    },
-
-    calculateResult() {
-      return (Number(this.amount) * this.result).toFixed(3);
-    },
-
-    disabled() {
-      return this.amount === 0 || !this.amount || this.loading
-    }
-  },
-  methods: {
-    getCurrencies() {
-      const currencies = localStorage.getItem('currencies')
-
-      if (currencies) {
-        this.currencies = JSON.parse(currencies)
-        return
-      }
-      axios.get('https://free.currencyconverterapi.com/api/v6/currencies')
-      .then(response => {
-        this.currencies = response.data.results
-        localStorage.setItem('currencies', JSON.stringify(response.data.results))
-      })
-    },
-    
-    convertCurrency(){
-      const key = `${this.from}_${this.to}`
-      this.loading = true
-      axios.get(`https://free.currencyconverterapi.com/api/v6/convert?q=${key}`)
-      .then((response) => {
-        this.loading = false
-        this.result = response.data.results[key].val
-      })
-    }
-  },
-  watch: {
-    from(){
-      this.result = 0
-    },
-    to(){
-      this.result = 0
+  methods:{
+    removeArticle(event){
+      this.articles = this.articles.filter(article => article.title !==  event)
     }
   }
 })
