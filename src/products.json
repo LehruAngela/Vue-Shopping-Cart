@@ -1,0 +1,20 @@
+[
+    {
+        "id": "1",
+        "title": "Shoe",
+        "image": "http://lorempixel.com/640/480/city",
+        "price": "1000"
+    },
+    {
+        "id": "2",
+        "title": "Bag",
+        "image": "http://lorempixel.com/640/480/people",
+        "price": "500"
+    },
+    {
+        "id": "3",
+        "title": "Purse",
+        "image": "http://lorempixel.com/640/480/animals",
+        "price": "300"
+    }
+]
