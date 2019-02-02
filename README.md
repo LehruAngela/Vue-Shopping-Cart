@@ -1,6 +1,6 @@
 # Vue Shopping Cart
 
-![alt text](http://lorempixel.com/640/480/people)
+![alt text](https://drive.google.com/file/d/1ur32_YigY2_owIdOd9kf8qXEm5VomGRG/view?usp=sharing)
 
 ## Project setup
 ```
