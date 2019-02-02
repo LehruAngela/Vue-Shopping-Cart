@@ -1,4 +1,6 @@
-# vue-project-shop
+# Vue Shopping Cart
+
+![alt text](http://lorempixel.com/640/480/people)
 
 ## Project setup
 ```
@@ -25,5 +27,3 @@ npm run test
 npm run lint
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
